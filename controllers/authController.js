@@ -30,6 +30,7 @@ exports.login = catchAsync(async (req, res) => {
   const { username, password } = req.body;
   console.log(username, password);
   const user = await User.findOne({ username });
+  
   if (!username || !password || !(await user.matchPassword(password)))
     throw new AppError('Invalid credentials', 400);
 
