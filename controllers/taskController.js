@@ -8,6 +8,7 @@ exports.getTasks = catchAsync(async (req, res) => {
 
 exports.createTask = catchAsync(async (req, res) => {
   const task = await Task.create({ ...req.body, user: req.user.id });
+
   res.json({ message: 'New Task Created', task });
 });
 
