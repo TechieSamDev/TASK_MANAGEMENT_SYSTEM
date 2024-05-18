@@ -6,7 +6,7 @@ const taskSchema = new Schema(
     title: { type: String, required: true },
     description: String,
     completed: { type: Boolean, default: false },
-    userId: {
+    user: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'User',
       required: true,
