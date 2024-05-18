@@ -16,8 +16,6 @@ const validationSchema = yup.object({
   id: yup.string().min(16),
 
   // Auth
-  firstName: yup.string().min(3),
-  lastName: yup.string().min(3),
   username: yup.string().min(3),
   email: yup.string().email(),
   password: yup.string().min(5),
