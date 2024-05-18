@@ -10,10 +10,7 @@
  */
 
 const yup = require('yup');
-const mongoose = require('mongoose');
-const AppError = require('../utils/AppError');
 const { logTable } = require('../utils/logger');
-const { isEmpty } = require('../utils');
 
 const validationSchema = yup.object({
   id: yup.string().min(16),
