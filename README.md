@@ -6,7 +6,7 @@ This project provides a simple task management system with user authentication, 
 
 ## API Documentation
 
-For detailed documentation on the API endpoints, please visit: [API Documentation]()
+For detailed documentation on the API endpoints, please visit: [API Documentation](https://documenter.getpostman.com/view/28124373/2sA3QmDEZa)
 
 ## Setup
 
