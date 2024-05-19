@@ -4,6 +4,10 @@
 
 This project provides a simple task management system with user authentication, CRUD operations for tasks, real-time notifications using Socket.IO, and data persistence with MongoDB.
 
+## API Documentation
+
+For detailed documentation on the API endpoints, please visit: [API Documentation]()
+
 ## Setup
 
 ### Prerequisites
@@ -22,138 +26,16 @@ This project provides a simple task management system with user authentication, 
    ```bash
    npm install
 
-3. Setting Environment Variables
-    Copy the contents of env.txt to a new file named .env:
+3. Setting Environment Variables:
+   - Copy the contents of `env.txt` to a new file named `.env`:
 
-4. Run the project 
-    ```bash
-    npm run dev
-## API Endpoints
 
-Authentication
-Register
-Endpoint: POST /auth/register
-Request Body:
-json
-Copy code
-{
-  "username": "string",
-  "password": "string"
-}
-Response:
-json
-Copy code
-{
-  "message": "User registered successfully"
-}
-Login
-Endpoint: POST /auth/login
-Request Body:
-json
-Copy code
-{
-  "username": "string",
-  "password": "string"
-}
-Response:
-json
-Copy code
-{
-  "token": "jwt_token"
-}
-Tasks
-Get Tasks
-Endpoint: GET /tasks
-Headers:
-Authorization: Bearer jwt_token
-Response:
-json
-Copy code
-[
-  {
-    "id": "task_id",
-    "title": "string",
-    "description": "string",
-    "completed": "boolean",
-    "userId": "user_id",
-    "createdAt": "date",
-    "updatedAt": "date"
-  }
-]
-Create Task
-Endpoint: POST /tasks
-Headers:
-Authorization: Bearer jwt_token
-Request Body:
-json
-Copy code
-{
-  "title": "string",
-  "description": "string"
-}
-Response:
-json
-Copy code
-{
-  "id": "task_id",
-  "title": "string",
-  "description": "string",
-  "completed": "boolean",
-  "userId": "user_id",
-  "createdAt": "date",
-  "updatedAt": "date"
-}
-Update Task
-Endpoint: PUT /tasks/:id
-Headers:
-Authorization: Bearer jwt_token
-Request Body:
-json
-Copy code
-{
-  "title": "string",
-  "description": "string",
-  "completed": "boolean"
-}
-Response:
-json
-Copy code
-{
-  "id": "task_id",
-  "title": "string",
-  "description": "string",
-  "completed": "boolean",
-  "userId": "user_id",
-  "createdAt": "date",
-  "updatedAt": "date"
-}
-Delete Task
-Endpoint: DELETE /tasks/:id
-Headers:
-Authorization: Bearer jwt_token
-Response:
-json
-Copy code
-{
-  "message": "Task deleted"
-}
-Real-time Notifications
-The API uses Socket.IO for real-time updates. When tasks are created, updated, or deleted, the corresponding events (task_created, task_updated, task_deleted) are emitted.
-
-To connect to the WebSocket, use the following:
-
-javascript
-Copy code
-const socket = io('http://localhost:3000');
-
-socket.on('task_created', (task) => {
-  console.log('New task created:', task);
-});
-
-socket.on('task_updated', (task) => {
-  console.log('Task updated:', task);
-});
-
-socket.on('task_deleted', (task) => {
-  console.log('Task deleted:', task);
-});
+4. Run the project:
+   - For development environment:
+     ```bash
+     npm run dev
+     ```
+   - For production environment:
+     ```bash
+     npm run prod
+     ```

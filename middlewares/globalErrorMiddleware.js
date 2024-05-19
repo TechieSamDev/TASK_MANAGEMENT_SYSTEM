@@ -11,7 +11,6 @@ module.exports = (err, req, res, next) => {
   }
   if (ENVIRONMENT.APP.ENV === 'production') {
     let error = err;
-    console.log(error);
     if (err instanceof MongooseError.CastError)
       error = handleMongooseCastError(err);
     else if (err instanceof MongooseError.ValidationError)
@@ -19,7 +18,7 @@ module.exports = (err, req, res, next) => {
     if ('timeout' in err && err.timeout) error = handleTimeoutError();
     // if (err.name === "JsonWebTokenError") error = handleJWTError();
     // if (err.name === "TokenExpiredError") error = handleJWTExpiredError();
-    if ('code' in err && err.code === 11000)
+    if (err.code === 11000)
       error = handleMongooseDuplicateFieldsError(err, req, res, next);
 
     sendErrorProd(error, res);
@@ -66,15 +65,11 @@ function handleMongooseValidationError(err) {
 }
 
 function handleMongooseDuplicateFieldsError(err, req, res, next) {
-  // Extract value from the error message if it matches a pattern
-  const matchResult = err.message.match(/(["'])(?:(?=(\\?))\2.)*?\1/);
-  if (matchResult && matchResult.length > 0) {
-    const value = matchResult[0];
-    const message = `Duplicate field value: ${value}. Please use a different value.`;
-    return new AppError(message, 409);
-  } else {
-    next(err);
-  }
+  const value = Object.keys(err.keyValue)[0];
+  return new AppError(
+    `Duplicate field value: ${value}. Please use another value!`,
+    400
+  );
 }
 
 function handleTimeoutError() {

@@ -5,7 +5,7 @@ module.exports = checkRequiredFields = ([...requiredFields]) => {
     const missingField = requiredFields.find((field) => !(field in req.body));
 
     if (missingField)
-      throw new AppError(`Field ${missingField} is required.`, 403);
+      throw new AppError(`Field '${missingField}' is required.`, 403);
 
     next();
   };
