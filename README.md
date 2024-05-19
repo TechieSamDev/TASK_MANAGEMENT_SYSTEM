@@ -27,7 +27,19 @@ For detailed documentation on the API endpoints, please visit: [API Documentatio
    npm install
 
 3. Setting Environment Variables:
-   - Copy the contents of `env.txt` to a new file named `.env`:
+   - If you have access to the `env.txt` file, copy its contents to a new file named `.env`. Otherwise, create a new `.env` file and add the following variables, providing your own values:
+     ```dotenv
+     # Example .env file
+     NODE_ENV=development
+     MONGO_URI_DEV=mongodb://127.0.0.1:27017/task-managemtent-system
+     MONGO_URI_PROD=mongodb+srv://username:password@clustername.mongodb.net/task-managemtent-system
+     JWT_SECRET_KEY=mysecretkey
+     JWT_EXPIRES_IN=1d
+     ```
+   - Please ensure to replace placeholders like `username`, `password`, and `clustername` in the MongoDB URI with your actual credentials.
+   - `JWT_SECRET_KEY` should be replaced with your own secure key.
+   - `JWT_EXPIRES_IN` specifies the expiration time for JWT tokens. You can adjust this value as needed.
+   - Contact the project owner for the `env.txt` file if you don't have access to the `env.txt` file.
 
 
 4. Run the project:
