@@ -17,7 +17,6 @@ const validationSchema = yup.object({
 
   // Auth
   username: yup.string().min(3),
-  email: yup.string().email(),
   password: yup.string().min(5),
 
   // Task

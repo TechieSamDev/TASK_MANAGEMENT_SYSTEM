@@ -11,16 +11,18 @@ const signToken = (id, config) => {
 // Register a new user
 exports.register = catchAsync(async (req, res) => {
   if (!req.body.username || !req.body.password)
-    throw new AppError('username and password needs to be provided', 400);
+    throw new AppError('Incomplete Register data (username & password)', 400);
 
-  await User.create({
+  const user = await User.create({
     username: req.body.username,
     password: req.body.password,
   });
 
+  user.password = undefined;
   return res.status(200).json({
-    message: 'User Created successfully',
     status: 'success',
+    message: 'User Created successfully',
+    user,
   });
 });
 
