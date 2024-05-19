@@ -2,13 +2,11 @@
 <html>
   <head>
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-    <title>Socket.IO chat</title>
+    <title></title>
     <style>
       body {
         margin: 0;
         padding-bottom: 3rem;
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-          Helvetica, Arial, sans-serif;
       }
 
       #messages {
@@ -34,21 +32,21 @@
 
       socket.on('newTask', function (task) {
         const item = document.createElement('li');
-        item.textContent = `Task "${task._id}" created. Title: ${task.title}, Description: ${task.description}`;
+        item.textContent = `Task "${task._id}" created. Title: "${task.title}", Description: "${task.description}"`;
         messages.appendChild(item);
         window.scrollTo(0, document.body.scrollHeight);
       });
 
       socket.on('taskUpdate', function (task) {
         const item = document.createElement('li');
-        item.textContent = `Task "${task._id}" updated. Title: ${task.title}, Description: ${task.description}`;
+        item.textContent = `Task "${task._id}" updated. Title: "${task.title}"", Description: "${task.description}"`;
         messages.appendChild(item);
         window.scrollTo(0, document.body.scrollHeight);
       });
 
       socket.on('taskDelete', function (task) {
         const item = document.createElement('li');
-        item.textContent = `Task "${task._id}" deleted. Title: ${task.title}, Description: ${task.description}`;
+        item.textContent = `Task "${task._id}" deleted. Title: "${task.title}"", Description: "${task.description}"`;
         messages.appendChild(item);
         window.scrollTo(0, document.body.scrollHeight);
       });
