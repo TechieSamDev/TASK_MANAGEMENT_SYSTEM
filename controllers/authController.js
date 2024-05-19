@@ -10,7 +10,6 @@ const signToken = (id, config) => {
 };
 // Register a new user
 exports.register = catchAsync(async (req, res) => {
-  console.log(req.body);
   if (!req.body.username || !req.body.password)
     throw new AppError('username and password needs to be provided', 400);
 
@@ -21,17 +20,16 @@ exports.register = catchAsync(async (req, res) => {
 
   return res.status(200).json({
     message: 'User Created successfully',
-    success: true,
+    status: 'success',
   });
 });
 
 // Login a user
 exports.login = catchAsync(async (req, res) => {
   const { username, password } = req.body;
-  console.log(username, password);
   const user = await User.findOne({ username });
-  
-  if (!username || !password || !(await user.matchPassword(password)))
+
+  if (!user || !(await user.matchPassword(password)))
     throw new AppError('Invalid credentials', 400);
 
   const jwt = signToken(user._id, {
@@ -46,6 +44,6 @@ exports.login = catchAsync(async (req, res) => {
   res.status(200).json({
     message: 'Logged in successfully',
     token: jwt,
-    success: true,
+    status: 'success',
   });
 });

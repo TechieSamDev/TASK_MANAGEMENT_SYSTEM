@@ -1,4 +1,5 @@
 const Task = require('../models/Task');
+const { io } = require('../sockets');
 const catchAsync = require('../utils/catchAsync');
 
 exports.getTasks = catchAsync(async (req, res) => {
@@ -9,6 +10,8 @@ exports.getTasks = catchAsync(async (req, res) => {
 exports.createTask = catchAsync(async (req, res) => {
   const task = await Task.create({ ...req.body, user: req.user.id });
 
+  const io = req.app.get('io');
+  io.emit('newTask', task);
   res.json({ message: 'New Task Created', task });
 });
 

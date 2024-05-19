@@ -7,8 +7,8 @@ const AppError = require('../utils/AppError');
 exports.protect = catchAsync(async (req, res, next) => {
   let token;
   // For Development
-  console.log(req.headers.authorization || req.headers.Authorization);
-  console.log(req.cookies);
+  // console.log(req.headers.authorization || req.headers.Authorization);
+  // console.log(req.cookies);
   if (
     (req.headers.authorization || req.headers.Authorization) &&
     req.headers.authorization.startsWith('Bearer')
