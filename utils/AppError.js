@@ -5,7 +5,6 @@ module.exports = class AppError extends Error {
 
   constructor(message, statusCode) {
     super(message);
-    // Object.setPrototypeOf(this, AppError.prototype);
 
     this.statusCode = statusCode;
     this.status = `${statusCode}`.startsWith('5') ? 'error' : 'fail';

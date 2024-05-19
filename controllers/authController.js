@@ -8,7 +8,7 @@ const signToken = (id, config) => {
     expiresIn: config.expiresIn,
   });
 };
-// Register a new user
+
 exports.register = catchAsync(async (req, res) => {
   if (!req.body.username || !req.body.password)
     throw new AppError('Incomplete Register data (username & password)', 400);
@@ -19,7 +19,7 @@ exports.register = catchAsync(async (req, res) => {
   });
 
   user.password = undefined;
-  
+
   return res.status(200).json({
     status: 'success',
     message: 'User Created successfully',
@@ -27,7 +27,6 @@ exports.register = catchAsync(async (req, res) => {
   });
 });
 
-// Login a user
 exports.login = catchAsync(async (req, res) => {
   const { username, password } = req.body;
   const user = await User.findOne({ username });

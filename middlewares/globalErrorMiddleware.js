@@ -16,8 +16,8 @@ module.exports = (err, req, res, next) => {
     else if (err instanceof MongooseError.ValidationError)
       error = handleMongooseValidationError(err);
     if ('timeout' in err && err.timeout) error = handleTimeoutError();
-    // if (err.name === "JsonWebTokenError") error = handleJWTError();
-    // if (err.name === "TokenExpiredError") error = handleJWTExpiredError();
+    if (err.name === 'JsonWebTokenError') error = handleJWTError();
+    if (err.name === 'TokenExpiredError') error = handleJWTExpiredError();
     if (err.code === 11000)
       error = handleMongooseDuplicateFieldsError(err, req, res, next);
 
