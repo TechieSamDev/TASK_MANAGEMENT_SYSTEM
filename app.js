@@ -16,5 +16,5 @@ app.use('/api/v1/tasks', require('./routes/taskRoutes'));
 app.use(require('./middlewares/globalErrorMiddleware'));
 app.get('/', (req, res) => {
   res.sendFile(join(__dirname, 'index.html'));
-});
+}); 
 module.exports = app;
