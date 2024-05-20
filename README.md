@@ -8,6 +8,13 @@ This project provides a simple task management system with user authentication, 
 
 For detailed documentation on the API endpoints, please visit: [API Documentation](https://documenter.getpostman.com/view/28124373/2sA3QmDEZa)
 
+## Static Page for Data Streaming
+
+The project includes a static page for data streaming, accessible at the root route (/).
+
+- In development, access the static page at: [https://localhost:5000](https://localhost:5000)
+- In production, access the static page at: [https://task-management-system-niyo.onrender.com/](https://task-management-system-niyo.onrender.com/)
+
 ## Setup
 
 ### Prerequisites
