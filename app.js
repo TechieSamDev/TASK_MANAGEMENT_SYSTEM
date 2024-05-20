@@ -13,6 +13,12 @@ app.use(validateInputDataWithYup);
 app.use('/api/v1/auth', require('./routes/authRoutes'));
 app.use('/api/v1/tasks', require('./routes/taskRoutes'));
 
+app.use('*', (req, res, next) => {
+  res
+    .status(400)
+    .json({ message: 'The requested resource was not found on this server' });
+});
+// Global Error Handler
 app.use(require('./middlewares/globalErrorMiddleware'));
 app.get('/', (req, res) => {
   res.sendFile(join(__dirname, 'index.html'));
