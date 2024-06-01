@@ -26,7 +26,7 @@ The project includes a static page for data streaming, accessible at the root ro
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/TechieSamDev/task-management-system.git
+   git clone https://github.com/TechieSamDev/TASK_MANAGEMENT_SYSTEM.git
    cd task-management-system
 
 2. Install Dependencies:
